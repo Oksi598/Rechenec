@@ -29,6 +29,7 @@ C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.AssemblyInfo.cs
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\EFCoreSqlServerNetTopologySuite.cs
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.sourcelink.json
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistic.CD8B545E.Up2Date
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.dll
@@ -55,5 +56,3 @@ D:\Rechenets\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\refint\L
 D:\Rechenets\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.pdb
 D:\Rechenets\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.genruntimeconfig.cache
 D:\Rechenets\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\ref\Logistics.Infrastructure.dll
-C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\bin\Debug\net8.0\Logistics.Infrastructure.runtimeconfig.json
-C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Infrastructure\obj\Debug\net8.0\Logistics.Infrastructure.genruntimeconfig.cache
