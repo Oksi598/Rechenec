@@ -1,5 +1,4 @@
 using Logistics.Domain.Enums;
-using NetTopologySuite.Geometries;
 
 namespace Logistics.Domain.Entities;
 
@@ -10,10 +9,11 @@ public sealed class Order
     public Guid CustomerId { get; set; }
     public Guid PickupDepotId { get; set; }
 
-    public Point DeliveryLocation { get; set; } = null!;
+    public double DeliveryLatitude { get; set; }
+    public double DeliveryLongitude { get; set; }
 
-    public decimal Weight { get; set; }
-    public decimal Volume { get; set; }
+    public double Weight { get; set; }
+    public double Volume { get; set; }
 
     public int Priority { get; set; }
     public OrderStatus Status { get; set; }
@@ -21,4 +21,3 @@ public sealed class Order
     public decimal PriceEstimate { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
 }
-

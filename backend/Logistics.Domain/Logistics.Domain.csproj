@@ -5,8 +5,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Geo types used by domain entities -->
-    <PackageReference Include="NetTopologySuite" Version="2.6.*" />
-  </ItemGroup>
 </Project>

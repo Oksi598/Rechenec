@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m4kMaBcbJdg=",
+  "dgSpecHash": "POA9hpfU/9Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Оксана\\.nuget\\packages\\nettopologysuite\\2.6.0\\nettopologysuite.2.6.0.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,7 +1,6 @@
 using Logistics.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NetTopologySuite.Geometries;
 
 namespace Logistics.Infrastructure.Data;
 
@@ -26,17 +25,58 @@ public sealed class TmsDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<Depot>(b =>
+        {
+            b.Property(x => x.Latitude).HasColumnType("float");
+            b.Property(x => x.Longitude).HasColumnType("float");
+            b.Property(x => x.CapacityWeight).HasColumnType("float");
+            b.Property(x => x.CapacityVolume).HasColumnType("float");
+        });
+
+        modelBuilder.Entity<Vehicle>(b =>
+        {
+            b.Property(x => x.CapacityWeight).HasColumnType("float");
+            b.Property(x => x.CapacityVolume).HasColumnType("float");
+            b.Property(x => x.FuelConsumption).HasColumnType("float");
+        });
+
+        modelBuilder.Entity<Order>(b =>
+        {
+            b.Property(x => x.DeliveryLatitude).HasColumnType("float");
+            b.Property(x => x.DeliveryLongitude).HasColumnType("float");
+            b.Property(x => x.Weight).HasColumnType("float");
+            b.Property(x => x.Volume).HasColumnType("float");
+            b.Property(x => x.Status).HasConversion<string>().HasMaxLength(128);
+            b.Property(x => x.PriceEstimate).HasPrecision(18, 2);
+        });
+
         modelBuilder.Entity<Route>(ConfigureRouteConcurrency);
-        ConfigureGeographyPoint(modelBuilder);
+        modelBuilder.Entity<Route>(b =>
+        {
+            b.Property(x => x.Status).HasConversion<string>().HasMaxLength(128);
+        });
 
-        // Enums -> int by convention is enough; specify explicitly for clarity.
-        modelBuilder.Entity<Order>().Property(x => x.Status).HasConversion<int>();
-        modelBuilder.Entity<Route>().Property(x => x.Status).HasConversion<int>();
-        modelBuilder.Entity<RoutePoint>().Property(x => x.Type).HasConversion<int>();
+        modelBuilder.Entity<RoutePoint>(b =>
+        {
+            b.Property(x => x.Latitude).HasColumnType("float");
+            b.Property(x => x.Longitude).HasColumnType("float");
+            b.Property(x => x.Type).HasConversion<string>().HasMaxLength(128);
+        });
 
-        modelBuilder.Entity<DeliveryProof>()
-            .HasIndex(x => x.ClientProofId)
-            .IsUnique();
+        modelBuilder.Entity<VehicleLocation>(b =>
+        {
+            b.Property(x => x.Latitude).HasColumnType("float");
+            b.Property(x => x.Longitude).HasColumnType("float");
+            b.Property(x => x.Speed).HasColumnType("float");
+        });
+
+        modelBuilder.Entity<DeliveryProof>(b =>
+        {
+            b.Property(x => x.ClientProofId).HasMaxLength(450);
+            b.Property(x => x.PhotoUrl).HasMaxLength(2048);
+            b.Property(x => x.Signature).HasMaxLength(2048);
+            b.HasIndex(x => x.ClientProofId).IsUnique();
+        });
     }
 
     private static void ConfigureRouteConcurrency(EntityTypeBuilder<Route> b)
@@ -45,28 +85,4 @@ public sealed class TmsDbContext : DbContext
             .IsRowVersion()
             .IsConcurrencyToken();
     }
-
-    /// <summary>
-    /// Sets NTS points as SQL Server geography with SRID=4326.
-    /// </summary>
-    private static void ConfigureGeographyPoint(ModelBuilder modelBuilder)
-    {
-        // Note: SRID must be consistent across geometry computations (Haversine and spatial queries).
-        // Some EF Core provider versions don't expose HasSrid() fluent API; we enforce SRID on Point values.
-        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-        {
-            foreach (var prop in entityType.GetProperties())
-            {
-                if (prop.ClrType == typeof(Point))
-                {
-                    modelBuilder.Entity(entityType.ClrType!)
-                        .Property<Point>(prop.Name)
-                        .HasColumnType("geography");
-                }
-            }
-        }
-    }
-
-    // Intentionally left empty: this DbContext is extended by modules (repositories/handlers).
 }
-

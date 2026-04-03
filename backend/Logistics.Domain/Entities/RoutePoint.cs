@@ -1,5 +1,4 @@
 using Logistics.Domain.Enums;
-using NetTopologySuite.Geometries;
 
 namespace Logistics.Domain.Entities;
 
@@ -12,11 +11,11 @@ public sealed class RoutePoint
 
     public int Sequence { get; set; }
 
-    public Point Location { get; set; } = null!;
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
 
     public DateTimeOffset? ArrivalTime { get; set; }
     public DateTimeOffset? DepartureTime { get; set; }
 
     public RoutePointType Type { get; set; }
 }
-

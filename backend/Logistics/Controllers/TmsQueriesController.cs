@@ -2,7 +2,9 @@ using Logistics.Application.Dtos;
 using Logistics.Application.Ports;
 using Logistics.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Logistics.Api.Controllers;
 
@@ -20,10 +22,9 @@ public sealed class TmsQueriesController : ControllerBase
     [HttpGet("drivers/{driverId:guid}/public")]
     public Task<DriverPublicDto> GetDriverPublic(
         Guid driverId,
-        [FromQuery] string? scope,
         CancellationToken ct)
     {
-        var maskingScope = TryParseScope(scope) ?? MaskingScope.External;
+        var maskingScope = ResolveMaskingScope(User);
 
         return _mediator.Send(new GetDriverPublicDtoQuery(driverId, maskingScope), ct);
     }
@@ -31,24 +32,20 @@ public sealed class TmsQueriesController : ControllerBase
     [HttpGet("contacts/{externalContactId:guid}/public")]
     public Task<ExternalContactDto> GetExternalContactPublic(
         Guid externalContactId,
-        [FromQuery] string? scope,
         CancellationToken ct)
     {
-        var maskingScope = TryParseScope(scope) ?? MaskingScope.External;
+        var maskingScope = ResolveMaskingScope(User);
 
         return _mediator.Send(
             new GetExternalContactDtoQuery(externalContactId, maskingScope),
             ct);
     }
 
-    private static MaskingScope? TryParseScope(string? scope)
+    private static MaskingScope ResolveMaskingScope(ClaimsPrincipal user)
     {
-        if (string.IsNullOrWhiteSpace(scope))
-            return null;
-
-        return Enum.TryParse<MaskingScope>(scope, ignoreCase: true, out var parsed)
-            ? parsed
-            : null;
+        return user.IsInRole("Dispatcher") || user.IsInRole("Admin")
+            ? MaskingScope.Internal
+            : MaskingScope.External;
     }
 }
 

@@ -1,5 +1,4 @@
 using Logistics.Domain.Entities;
-using NetTopologySuite.Geometries;
 
 namespace Logistics.Application.Ports;
 
@@ -8,8 +7,10 @@ public interface ILoadOptimizationDataProvider
     Task<LoadOptimizationData> GetDataAsync(Guid routeId, CancellationToken ct);
 }
 
+/// <summary>WGS84 coordinates for Haversine distance (lat/lon in decimal degrees).</summary>
+public readonly record struct GeoCoordinate(double Latitude, double Longitude);
+
 public sealed record LoadOptimizationData(
     Vehicle Vehicle,
-    Point DepotLocation,
+    GeoCoordinate Depot,
     IList<Order> Orders);
-

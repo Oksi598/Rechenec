@@ -14,7 +14,7 @@ export function createTrackingConnection(apiBaseUrl: string, routeId: string): H
   const connection = new HubConnectionBuilder()
     .withUrl(url)
     .configureLogging(LogLevel.Information)
-    .withAutomaticReconnect()
+    .withAutomaticReconnect([0, 2000, 5000, 10000])
     .build()
 
   return connection
@@ -28,6 +28,17 @@ export async function startTracking(
 
   if (connection.state !== 'Connected') {
     await connection.start()
+  }
+}
+
+export async function stopTracking(
+  connection: HubConnection,
+  onVehicleLocationChanged: (payload: VehicleLocationChangedPayload) => void
+) {
+  connection.off('VehicleLocationChanged', onVehicleLocationChanged)
+
+  if (connection.state !== 'Disconnected') {
+    await connection.stop()
   }
 }
 

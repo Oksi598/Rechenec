@@ -1,0 +1,18 @@
+{
+  "name": "Rechenec TMS",
+  "short_name": "TMS",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "description": "Transportation management system with offline delivery proof sync.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

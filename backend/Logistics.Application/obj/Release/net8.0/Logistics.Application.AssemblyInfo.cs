@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Logistics.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea884db52bf406c9de4cf41387c675bdb9be7b7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4527d2c42a1e7da09a0ee034f77dc68fe13262f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Logistics.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Logistics.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -6,12 +6,11 @@ public sealed class Vehicle
 
     public string PlateNumber { get; set; } = string.Empty;
 
-    public decimal CapacityWeight { get; set; }
-    public decimal CapacityVolume { get; set; }
+    public double CapacityWeight { get; set; }
+    public double CapacityVolume { get; set; }
 
-    public decimal FuelConsumption { get; set; }
+    public double FuelConsumption { get; set; }
     public string VehicleType { get; set; } = string.Empty;
 
     public bool IsActive { get; set; }
 }
-

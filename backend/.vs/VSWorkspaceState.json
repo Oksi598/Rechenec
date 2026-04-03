@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Logistics",
+    "\\Logistics.Api.Tests",
     "\\Logistics.Application",
     "\\Logistics.Domain",
     "\\Logistics.Infrastructure",
     "\\Logistics\\Controllers"
   ],
-  "SelectedNode": "\\Logistics\\Logistics.sln",
+  "SelectedNode": "\\Logistics.Api.Tests\\Logistics.Api.Tests.csproj",
   "PreviewInSolutionExplorer": false
 }

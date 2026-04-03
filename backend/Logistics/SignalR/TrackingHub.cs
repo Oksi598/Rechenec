@@ -1,10 +1,14 @@
 using Logistics.Domain.Entities;
+using Logistics.Api.Observability;
 using Logistics.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
-using NetTopologySuite.Geometries;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Logistics.Api.SignalR;
 
+[Authorize]
 public sealed class TrackingHub : Hub
 {
     private const string GroupPrefix = "route:";
@@ -23,7 +27,12 @@ public sealed class TrackingHub : Hub
 
         if (Guid.TryParse(routeIdValue, out var routeId))
         {
+            await EnsureCanAccessRouteAsync(routeId, default);
             await Groups.AddToGroupAsync(Context.ConnectionId, $"{GroupPrefix}{routeId}");
+        }
+        else
+        {
+            throw new HubException("Missing or invalid routeId query parameter.");
         }
 
         await base.OnConnectedAsync();
@@ -31,16 +40,16 @@ public sealed class TrackingHub : Hub
 
     public async Task UpdateVehicleLocation(UpdateVehicleLocationDto dto, CancellationToken ct = default)
     {
+        await EnsureCanAccessRouteAsync(dto.RouteId, ct);
         var now = DateTimeOffset.UtcNow;
 
-        // Persisting coordinates can be expensive; for a blueprint we write a row per update.
-        // (In production: throttle/batch per vehicle.)
         var location = new VehicleLocation
         {
             Id = Guid.NewGuid(),
             VehicleId = dto.VehicleId,
-            Location = new Point(dto.Lng, dto.Lat) { SRID = 4326 },
-            Speed = (decimal)(dto.Speed ?? 0),
+            Latitude = dto.Lat,
+            Longitude = dto.Lng,
+            Speed = dto.Speed ?? 0,
             RecordedAt = now
         };
 
@@ -58,6 +67,24 @@ public sealed class TrackingHub : Hub
 
         await Clients.Group($"{GroupPrefix}{dto.RouteId}")
             .SendAsync("VehicleLocationChanged", payload, ct);
+        TmsMetrics.TrackTrackingUpdate();
+    }
+
+    private async Task EnsureCanAccessRouteAsync(Guid routeId, CancellationToken ct)
+    {
+        if (Context.User is null)
+            throw new HubException("Unauthorized.");
+
+        if (Context.User.IsInRole("Dispatcher") || Context.User.IsInRole("Admin"))
+            return;
+
+        var userIdValue = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(userIdValue, out var userId))
+            throw new HubException("Unauthorized.");
+
+        var hasAccess = await _db.Routes.AnyAsync(r => r.Id == routeId && r.DriverId == userId, ct);
+        if (!hasAccess)
+            throw new HubException("Forbidden for this route.");
     }
 }
 
@@ -67,4 +94,3 @@ public sealed record UpdateVehicleLocationDto(
     double Lat,
     double Lng,
     double? Speed);
-

@@ -24,3 +24,15 @@ C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Deb
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\refint\Logistics.Domain.dll
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.pdb
 C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\ref\Logistics.Domain.dll
+D:\Rechenets\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.deps.json
+D:\Rechenets\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.dll
+D:\Rechenets\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.pdb
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.AssemblyInfoInputs.cache
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.AssemblyInfo.cs
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.csproj.CoreCompileInputs.cache
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.sourcelink.json
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.dll
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\refint\Logistics.Domain.dll
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.pdb
+D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\ref\Logistics.Domain.dll

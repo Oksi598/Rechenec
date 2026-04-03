@@ -1,120 +1,140 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useMemo, useState } from 'react'
+import { HubConnectionState } from '@microsoft/signalr'
+import { enqueueDeliveryProof } from './offline/deliveryProofQueue'
+import { createTrackingConnection, startTracking, stopTracking } from './realtime/tracking'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [apiBaseUrl, setApiBaseUrl] = useState('https://localhost:7253')
+  const [routeId, setRouteId] = useState('')
+  const [vehicleId, setVehicleId] = useState('')
+  const [orderId, setOrderId] = useState('')
+  const [signature, setSignature] = useState('')
+  const [file, setFile] = useState(null)
+  const [status, setStatus] = useState('disconnected')
+  const [lastError, setLastError] = useState('')
+  const [locations, setLocations] = useState([])
+
+  const connection = useMemo(() => {
+    if (!routeId) return null
+    return createTrackingConnection(apiBaseUrl, routeId)
+  }, [apiBaseUrl, routeId])
+
+  useEffect(() => {
+    if (!connection) return
+
+    const onVehicleLocationChanged = (payload) => {
+      setLocations((prev) => {
+        const next = [{ ...payload, receivedAt: new Date().toISOString() }, ...prev]
+        return next.slice(0, 20)
+      })
+      setStatus('connected')
+    }
+
+    connection.onreconnecting(() => setStatus('reconnecting'))
+    connection.onreconnected(() => setStatus('connected'))
+    connection.onclose(() => setStatus('disconnected'))
+
+    startTracking(connection, onVehicleLocationChanged).catch((err) => {
+      setLastError(String(err))
+      setStatus('error')
+    })
+
+    return () => {
+      stopTracking(connection, onVehicleLocationChanged).catch(() => {})
+    }
+  }, [connection])
+
+  const connectionStateLabel = useMemo(() => {
+    if (!connection) return status
+    switch (connection.state) {
+      case HubConnectionState.Connected:
+        return 'connected'
+      case HubConnectionState.Reconnecting:
+        return 'reconnecting'
+      case HubConnectionState.Connecting:
+        return 'connecting'
+      default:
+        return status
+    }
+  }, [connection, status])
+
+  async function handleQueueProof(event) {
+    event.preventDefault()
+    if (!file || !orderId) return
+
+    const clientProofId = `${orderId}-${Date.now()}`
+    try {
+      await enqueueDeliveryProof({
+        clientProofId,
+        orderId,
+        signature,
+        photoBlob: file,
+        photoFileName: file.name,
+      })
+      setSignature('')
+      setFile(null)
+      setLastError('')
+    } catch (err) {
+      setLastError(String(err))
+    }
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="tms-layout">
+      <section className="panel">
+        <h1>TMS Dispatcher Console</h1>
+        <p>Realtime route tracking + offline delivery proof queue.</p>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section className="panel">
+        <h2>Tracking</h2>
+        <div className="row">
+          <label>
+            API Base URL
+            <input value={apiBaseUrl} onChange={(e) => setApiBaseUrl(e.target.value)} />
+          </label>
+          <label>
+            Route ID
+            <input value={routeId} onChange={(e) => setRouteId(e.target.value)} />
+          </label>
+          <label>
+            Vehicle ID (filter)
+            <input value={vehicleId} onChange={(e) => setVehicleId(e.target.value)} />
+          </label>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+        <p className="status">Connection: {connectionStateLabel}</p>
+        {lastError && <p className="error">{lastError}</p>}
+        <ul className="log">
+          {locations
+            .filter((item) => !vehicleId || item.vehicleId === vehicleId)
+            .map((item) => (
+              <li key={`${item.vehicleId}-${item.recordedAt}`}>
+                {item.vehicleId} :: {item.lat.toFixed(5)}, {item.lng.toFixed(5)} :: {item.speed ?? 0} km/h
+              </li>
+            ))}
+        </ul>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <section className="panel">
+        <h2>Offline Delivery Proof</h2>
+        <form onSubmit={handleQueueProof} className="proof-form">
+          <label>
+            Order ID
+            <input value={orderId} onChange={(e) => setOrderId(e.target.value)} required />
+          </label>
+          <label>
+            Signature
+            <input value={signature} onChange={(e) => setSignature(e.target.value)} required />
+          </label>
+          <label>
+            Photo
+            <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] ?? null)} required />
+          </label>
+          <button type="submit">Queue Proof</button>
+        </form>
+      </section>
+    </main>
   )
 }
 
