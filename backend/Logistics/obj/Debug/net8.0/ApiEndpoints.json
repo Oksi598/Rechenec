@@ -1,0 +1,111 @@
+[
+  {
+    "ContainingType": "Logistics.Api.Controllers.TmsQueriesController",
+    "Method": "GetExternalContactPublic",
+    "RelativePath": "api/tms/contacts/{externalContactId}/public",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "externalContactId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "scope",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Logistics.Application.Dtos.ExternalContactDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Logistics.Api.Controllers.TmsCommandsController",
+    "Method": "SyncDeliveryProof",
+    "RelativePath": "api/tms/delivery-proofs/sync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "clientProofId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "signature",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "photo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Logistics.Api.Controllers.TmsQueriesController",
+    "Method": "GetDriverPublic",
+    "RelativePath": "api/tms/drivers/{driverId}/public",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "driverId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "scope",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Logistics.Application.Dtos.DriverPublicDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Logistics.Api.Controllers.TmsCommandsController",
+    "Method": "OptimizeLoad",
+    "RelativePath": "api/tms/routes/{routeId}/optimize-load",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "routeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -11,3 +11,16 @@ C:\Users\Dell\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.
 C:\Users\Dell\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\refint\Logistics.Domain.dll
 C:\Users\Dell\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.pdb
 C:\Users\Dell\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\ref\Logistics.Domain.dll
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.deps.json
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.dll
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.pdb
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.csproj.AssemblyReference.cache
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.AssemblyInfoInputs.cache
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.AssemblyInfo.cs
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.sourcelink.json
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.dll
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\refint\Logistics.Domain.dll
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.pdb
+C:\Users\Оксана\Desktop\hackaton\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\ref\Logistics.Domain.dll
