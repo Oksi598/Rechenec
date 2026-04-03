@@ -27,142 +27,142 @@ namespace Logistics.Infrastructure.Data.Migrations
                 END
                 """);
 
-            migrationBuilder.CreateTable(
-                name: "Depots",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Latitude = table.Column<double>(type: "float", nullable: false),
-                    Longitude = table.Column<double>(type: "float", nullable: false),
-                    CapacityWeight = table.Column<double>(type: "float", nullable: false),
-                    CapacityVolume = table.Column<double>(type: "float", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Depots", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[Depots]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [Depots] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [Name] nvarchar(max) NOT NULL,
+                        [Latitude] float NOT NULL,
+                        [Longitude] float NOT NULL,
+                        [CapacityWeight] float NOT NULL,
+                        [CapacityVolume] float NOT NULL,
+                        CONSTRAINT [PK_Depots] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "OrderAssignments",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RouteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AssignedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderAssignments", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[OrderAssignments]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [OrderAssignments] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [OrderId] uniqueidentifier NOT NULL,
+                        [RouteId] uniqueidentifier NOT NULL,
+                        [AssignedAt] datetimeoffset NOT NULL,
+                        CONSTRAINT [PK_OrderAssignments] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PickupDepotId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DeliveryLatitude = table.Column<double>(type: "float", nullable: false),
-                    DeliveryLongitude = table.Column<double>(type: "float", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
-                    Volume = table.Column<double>(type: "float", nullable: false),
-                    Priority = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    PriceEstimate = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[Orders]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [Orders] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [CustomerId] uniqueidentifier NOT NULL,
+                        [PickupDepotId] uniqueidentifier NOT NULL,
+                        [DeliveryLatitude] float NOT NULL,
+                        [DeliveryLongitude] float NOT NULL,
+                        [Weight] float NOT NULL,
+                        [Volume] float NOT NULL,
+                        [Priority] int NOT NULL,
+                        [Status] nvarchar(128) NOT NULL,
+                        [PriceEstimate] decimal(18,2) NOT NULL,
+                        [CreatedAt] datetimeoffset NOT NULL,
+                        CONSTRAINT [PK_Orders] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "RoutePoints",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RouteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Sequence = table.Column<int>(type: "int", nullable: false),
-                    Latitude = table.Column<double>(type: "float", nullable: false),
-                    Longitude = table.Column<double>(type: "float", nullable: false),
-                    ArrivalTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    DepartureTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoutePoints", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[RoutePoints]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [RoutePoints] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [RouteId] uniqueidentifier NOT NULL,
+                        [OrderId] uniqueidentifier NOT NULL,
+                        [Sequence] int NOT NULL,
+                        [Latitude] float NOT NULL,
+                        [Longitude] float NOT NULL,
+                        [ArrivalTime] datetimeoffset NULL,
+                        [DepartureTime] datetimeoffset NULL,
+                        [Type] nvarchar(128) NOT NULL,
+                        CONSTRAINT [PK_RoutePoints] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "Routes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    VehicleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DriverId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    StartTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    EndTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Routes", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[Routes]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [Routes] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [VehicleId] uniqueidentifier NOT NULL,
+                        [DriverId] uniqueidentifier NOT NULL,
+                        [StartTime] datetimeoffset NOT NULL,
+                        [EndTime] datetimeoffset NOT NULL,
+                        [Status] nvarchar(128) NOT NULL,
+                        [RowVersion] rowversion NOT NULL,
+                        CONSTRAINT [PK_Routes] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[Users]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [Users] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [Email] nvarchar(max) NOT NULL,
+                        [PasswordHash] nvarchar(max) NOT NULL,
+                        [FullName] nvarchar(max) NOT NULL,
+                        [Phone] nvarchar(max) NOT NULL,
+                        [Role] nvarchar(max) NOT NULL,
+                        [CreatedAt] datetimeoffset NOT NULL,
+                        CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "VehicleLocations",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    VehicleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Latitude = table.Column<double>(type: "float", nullable: false),
-                    Longitude = table.Column<double>(type: "float", nullable: false),
-                    Speed = table.Column<double>(type: "float", nullable: false),
-                    RecordedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VehicleLocations", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[VehicleLocations]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [VehicleLocations] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [VehicleId] uniqueidentifier NOT NULL,
+                        [Latitude] float NOT NULL,
+                        [Longitude] float NOT NULL,
+                        [Speed] float NOT NULL,
+                        [RecordedAt] datetimeoffset NOT NULL,
+                        CONSTRAINT [PK_VehicleLocations] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
-            migrationBuilder.CreateTable(
-                name: "Vehicles",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PlateNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CapacityWeight = table.Column<double>(type: "float", nullable: false),
-                    CapacityVolume = table.Column<double>(type: "float", nullable: false),
-                    FuelConsumption = table.Column<double>(type: "float", nullable: false),
-                    VehicleType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vehicles", x => x.Id);
-                });
+            migrationBuilder.Sql(
+                """
+                IF OBJECT_ID(N'[Vehicles]', N'U') IS NULL
+                BEGIN
+                    CREATE TABLE [Vehicles] (
+                        [Id] uniqueidentifier NOT NULL,
+                        [PlateNumber] nvarchar(max) NOT NULL,
+                        [CapacityWeight] float NOT NULL,
+                        [CapacityVolume] float NOT NULL,
+                        [FuelConsumption] float NOT NULL,
+                        [VehicleType] nvarchar(max) NOT NULL,
+                        [IsActive] bit NOT NULL,
+                        CONSTRAINT [PK_Vehicles] PRIMARY KEY ([Id])
+                    );
+                END
+                """);
 
             migrationBuilder.Sql(
                 """
