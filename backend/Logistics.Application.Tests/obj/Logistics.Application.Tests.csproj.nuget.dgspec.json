@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj": {}
+    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj": {}
   },
   "projects": {
-    "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj": {
+    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj",
         "projectName": "Logistics.Application.Tests",
-        "projectPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj",
-        "packagesPath": "C:\\Users\\LOQ\\.nuget\\packages\\",
-        "outputPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application.Tests\\obj\\",
+        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application.Tests\\Logistics.Application.Tests.csproj",
+        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LOQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-                "projectPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
+              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
+                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
               },
-              "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
+              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
               }
             }
           }
@@ -51,7 +51,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -90,24 +90,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
+    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
         "projectName": "Logistics.Application",
-        "projectPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
-        "packagesPath": "C:\\Users\\LOQ\\.nuget\\packages\\",
-        "outputPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application\\obj\\",
+        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
+        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LOQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -122,8 +122,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
+              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
               }
             }
           }
@@ -138,7 +138,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -169,24 +169,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
         "projectName": "Logistics.Domain",
-        "projectPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
-        "packagesPath": "C:\\Users\\LOQ\\.nuget\\packages\\",
-        "outputPath": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LOQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -213,7 +213,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -234,7 +234,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
