@@ -11,21 +11,21 @@ namespace Logistics.Infrastructure.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(
-                """
-                IF OBJECT_ID(N'[DeliveryProofs]', N'U') IS NULL
-                BEGIN
-                    CREATE TABLE [DeliveryProofs] (
-                        [Id] uniqueidentifier NOT NULL,
-                        [OrderId] uniqueidentifier NOT NULL,
-                        [ClientProofId] nvarchar(450) NOT NULL,
-                        [PhotoUrl] nvarchar(2048) NOT NULL,
-                        [Signature] nvarchar(2048) NOT NULL,
-                        [DeliveredAt] datetimeoffset NOT NULL,
-                        CONSTRAINT [PK_DeliveryProofs] PRIMARY KEY ([Id])
-                    );
-                END
-                """);
+            migrationBuilder.CreateTable(
+                name: "DeliveryProofs",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ClientProofId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
+                    Signature = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
+                    DeliveredAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeliveryProofs", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Depots",
@@ -164,32 +164,18 @@ namespace Logistics.Infrastructure.Data.Migrations
                     table.PrimaryKey("PK_Vehicles", x => x.Id);
                 });
 
-            migrationBuilder.Sql(
-                """
-                IF OBJECT_ID(N'[DeliveryProofs]', N'U') IS NOT NULL
-                    AND NOT EXISTS (
-                        SELECT 1
-                        FROM sys.indexes
-                        WHERE name = N'IX_DeliveryProofs_ClientProofId'
-                          AND object_id = OBJECT_ID(N'[DeliveryProofs]')
-                    )
-                BEGIN
-                    CREATE UNIQUE INDEX [IX_DeliveryProofs_ClientProofId]
-                    ON [DeliveryProofs] ([ClientProofId]);
-                END
-                """);
+            migrationBuilder.CreateIndex(
+                name: "IX_DeliveryProofs_ClientProofId",
+                table: "DeliveryProofs",
+                column: "ClientProofId",
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(
-                """
-                IF OBJECT_ID(N'[DeliveryProofs]', N'U') IS NOT NULL
-                BEGIN
-                    DROP TABLE [DeliveryProofs];
-                END
-                """);
+            migrationBuilder.DropTable(
+                name: "DeliveryProofs");
 
             migrationBuilder.DropTable(
                 name: "Depots");
