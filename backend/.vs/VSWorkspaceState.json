@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Logistics",
+    "\\Logistics.Application",
+    "\\Logistics.Domain",
+    "\\Logistics.Infrastructure",
+    "\\Logistics\\Controllers"
+  ],
+  "SelectedNode": "\\Logistics\\Logistics.sln",
+  "PreviewInSolutionExplorer": false
+}

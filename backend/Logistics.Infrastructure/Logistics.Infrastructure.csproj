@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- EF Core + SQL Server + NetTopologySuite -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="8.0.*" />
+    <PackageReference Include="NetTopologySuite" Version="2.6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Provides IWebHostEnvironment and other ASP.NET Core abstractions without NuGet package version issues -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\\Logistics.Domain\\Logistics.Domain.csproj" />
+    <ProjectReference Include="..\\Logistics.Application\\Logistics.Application.csproj" />
+  </ItemGroup>
+</Project>
