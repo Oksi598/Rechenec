@@ -1,3 +1,4 @@
+using Logistics.Domain;
 using Logistics.Domain.Entities;
 using Logistics.Api.Observability;
 using Logistics.Infrastructure.Data;
@@ -75,7 +76,7 @@ public sealed class TrackingHub : Hub
         if (Context.User is null)
             throw new HubException("Unauthorized.");
 
-        if (Context.User.IsInRole("Dispatcher") || Context.User.IsInRole("Admin"))
+        if (Context.User.IsInRole(AppRoles.Dispatcher))
             return;
 
         var userIdValue = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);

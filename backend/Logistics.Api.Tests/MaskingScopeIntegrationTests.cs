@@ -1,4 +1,9 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Security.Claims;
+using System.Text;
 using Logistics.Api;
 using Logistics.Application.Dtos;
 using Logistics.Application.Ports;
@@ -10,16 +15,32 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Logistics.Api.Tests;
 
 public sealed class MaskingScopeIntegrationTests
 {
+    private const string TestJwtKey = "UnitTestSigningKey_MustBe32CharsMin!!!!!!!!";
+
     [Fact]
-    public async Task Anonymous_Request_Uses_External_MaskingScope()
+    public async Task Unauthenticated_Request_Returns_Unauthorized()
     {
         await using var factory = new TestApiFactory();
         using var client = factory.CreateClient();
+
+        var response = await client.GetAsync($"/api/tms/drivers/{Guid.NewGuid()}/public");
+
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task Customer_Jwt_Uses_External_MaskingScope()
+    {
+        await using var factory = new TestApiFactory();
+        using var client = factory.CreateClient();
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", CreateTestJwt(Guid.NewGuid(), "Customer"));
 
         var id = Guid.NewGuid();
         var dto = await client.GetFromJsonAsync<DriverPublicDto>($"/api/tms/drivers/{id}/public");
@@ -29,12 +50,12 @@ public sealed class MaskingScopeIntegrationTests
     }
 
     [Fact]
-    public async Task Dispatcher_Header_Uses_Internal_MaskingScope()
+    public async Task Dispatcher_Jwt_Uses_Internal_MaskingScope()
     {
         await using var factory = new TestApiFactory();
         using var client = factory.CreateClient();
-        client.DefaultRequestHeaders.Add("X-User-Id", Guid.NewGuid().ToString());
-        client.DefaultRequestHeaders.Add("X-User-Role", "Dispatcher");
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", CreateTestJwt(Guid.NewGuid(), "Dispatcher"));
 
         var id = Guid.NewGuid();
         var dto = await client.GetFromJsonAsync<DriverPublicDto>($"/api/tms/drivers/{id}/public");
@@ -43,16 +64,41 @@ public sealed class MaskingScopeIntegrationTests
         Assert.Equal(MaskingScope.Internal.ToString(), dto!.FullName);
     }
 
+    private static string CreateTestJwt(Guid userId, string role)
+    {
+        var claims = new List<Claim>
+        {
+            new(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            new(ClaimTypes.NameIdentifier, userId.ToString()),
+            new(ClaimTypes.Role, role)
+        };
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TestJwtKey));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var token = new JwtSecurityToken(
+            "Logistics.Tms.Tests",
+            "Logistics.Tms.Tests",
+            claims,
+            expires: DateTime.UtcNow.AddHours(1),
+            signingCredentials: creds);
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
     private sealed class TestApiFactory : WebApplicationFactory<Program>
     {
-        protected override void ConfigureWebHost(Microsoft.AspNetCore.Hosting.IWebHostBuilder builder)
+        protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.UseEnvironment("Testing");
             builder.ConfigureAppConfiguration((_, config) =>
             {
                 config.AddInMemoryCollection(new Dictionary<string, string?>
                 {
-                    ["Database:AutoMigrate"] = "false"
+                    ["Database:AutoMigrate"] = "false",
+                    ["Jwt:Issuer"] = "Logistics.Tms.Tests",
+                    ["Jwt:Audience"] = "Logistics.Tms.Tests",
+                    ["Jwt:SigningKey"] = TestJwtKey,
+                    ["Jwt:AccessTokenMinutes"] = "60"
                 });
             });
 

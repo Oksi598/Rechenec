@@ -14,11 +14,12 @@ function App() {
   const [status, setStatus] = useState('disconnected')
   const [lastError, setLastError] = useState('')
   const [locations, setLocations] = useState([])
+  const [accessToken, setAccessToken] = useState('')
 
   const connection = useMemo(() => {
     if (!routeId) return null
-    return createTrackingConnection(apiBaseUrl, routeId)
-  }, [apiBaseUrl, routeId])
+    return createTrackingConnection(apiBaseUrl, routeId, accessToken.trim() || null)
+  }, [apiBaseUrl, routeId, accessToken])
 
   useEffect(() => {
     if (!connection) return
@@ -101,6 +102,16 @@ function App() {
           <label>
             Vehicle ID (filter)
             <input value={vehicleId} onChange={(e) => setVehicleId(e.target.value)} />
+          </label>
+          <label>
+            JWT (login)
+            <input
+              type="password"
+              autoComplete="off"
+              placeholder="Bearer from /api/auth/login"
+              value={accessToken}
+              onChange={(e) => setAccessToken(e.target.value)}
+            />
           </label>
         </div>
         <p className="status">Connection: {connectionStateLabel}</p>

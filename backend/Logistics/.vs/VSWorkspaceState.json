@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Backup",
+    "\\Backup1",
+    "\\bin",
+    "\\Controllers",
+    "\\obj",
+    "\\Observability",
+    "\\Properties",
+    "\\Security",
+    "\\SignalR"
   ],
+  "SelectedNode": "\\SignalR",
   "PreviewInSolutionExplorer": false
 }

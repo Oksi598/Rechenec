@@ -8,11 +8,17 @@ export type VehicleLocationChangedPayload = {
   recordedAt: string
 }
 
-export function createTrackingConnection(apiBaseUrl: string, routeId: string): HubConnection {
+export function createTrackingConnection(
+  apiBaseUrl: string,
+  routeId: string,
+  accessToken?: string | null
+): HubConnection {
   const url = `${apiBaseUrl}/hubs/tracking?routeId=${encodeURIComponent(routeId)}`
 
   const connection = new HubConnectionBuilder()
-    .withUrl(url)
+    .withUrl(url, {
+      accessTokenFactory: () => accessToken ?? '',
+    })
     .configureLogging(LogLevel.Information)
     .withAutomaticReconnect([0, 2000, 5000, 10000])
     .build()

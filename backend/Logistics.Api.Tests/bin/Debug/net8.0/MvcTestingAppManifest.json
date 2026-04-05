@@ -1,6 +1,6 @@
 {
-  "Logistics.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Rechenets\\Rechenec\\backend\\Logistics",
-  "Logistics.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Application",
-  "Logistics.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Domain",
-  "Logistics.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Rechenets\\Rechenec\\backend\\Logistics.Infrastructure"
+  "Logistics.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics",
+  "Logistics.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application",
+  "Logistics.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain",
+  "Logistics.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure"
 }

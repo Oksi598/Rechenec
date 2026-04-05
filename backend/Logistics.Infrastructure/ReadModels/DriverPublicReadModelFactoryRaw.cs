@@ -1,6 +1,5 @@
 using Logistics.Application.Dtos;
 using Logistics.Application.Ports;
-using Logistics.Domain.Entities;
 using Logistics.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,8 +19,7 @@ public sealed class DriverPublicReadModelFactoryRaw : IDriverPublicReadModelFact
         var user = await _db.Users
             .SingleAsync(u => u.Id == driverId, ct);
 
-        // This is RAW: values are not masked.
-        var contact = new MaskedContactDto(user.Email, user.Phone);
+        var contact = new MaskedContactDto(user.Email ?? string.Empty, user.PhoneNumber ?? string.Empty);
 
         return new DriverPublicDto(user.Id, user.FullName, contact);
     }

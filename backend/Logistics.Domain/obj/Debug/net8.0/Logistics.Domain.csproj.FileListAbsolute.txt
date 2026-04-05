@@ -35,3 +35,15 @@ D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain
 D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\refint\Logistics.Domain.dll
 D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.pdb
 D:\Rechenets\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\ref\Logistics.Domain.dll
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.deps.json
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.dll
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\bin\Debug\net8.0\Logistics.Domain.pdb
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.AssemblyInfoInputs.cache
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.AssemblyInfo.cs
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.sourcelink.json
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.dll
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\refint\Logistics.Domain.dll
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\Logistics.Domain.pdb
+C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics.Domain\obj\Debug\net8.0\ref\Logistics.Domain.dll

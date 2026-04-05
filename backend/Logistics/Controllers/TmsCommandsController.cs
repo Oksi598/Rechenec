@@ -1,7 +1,9 @@
 using Logistics.Application.Commands;
 using Logistics.Application.Ports;
 using Logistics.Api.Observability;
+using Logistics.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +11,7 @@ namespace Logistics.Api.Controllers;
 
 [ApiController]
 [Route("api/tms")]
+[Authorize]
 public sealed class TmsCommandsController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -18,6 +21,7 @@ public sealed class TmsCommandsController : ControllerBase
         _mediator = mediator;
     }
 
+    [Authorize(Roles = AppRoles.Dispatcher)]
     [HttpPost("routes/{routeId:guid}/optimize-load")]
     public async Task<IActionResult> OptimizeLoad(Guid routeId, CancellationToken ct)
     {
@@ -26,6 +30,7 @@ public sealed class TmsCommandsController : ControllerBase
         return Ok();
     }
 
+    [Authorize(Roles = AppRoles.Dispatcher)]
     [HttpPut("routes/{routeId:guid}/assignment")]
     public async Task<IActionResult> UpdateRouteAssignment(
         Guid routeId,
@@ -76,6 +81,7 @@ public sealed class TmsCommandsController : ControllerBase
         }
     }
 
+    [Authorize(Policy = "DriverOrDispatcher")]
     [HttpPost("delivery-proofs/sync")]
     public async Task<IActionResult> SyncDeliveryProof([FromForm] SyncDeliveryProofForm form, CancellationToken ct)
     {

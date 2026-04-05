@@ -1,17 +1,18 @@
 using Logistics.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Logistics.Infrastructure.Data;
 
-public sealed class TmsDbContext : DbContext
+public sealed class TmsDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
 {
     public TmsDbContext(DbContextOptions<TmsDbContext> options)
         : base(options)
     {
     }
 
-    public DbSet<User> Users => Set<User>();
     public DbSet<Vehicle> Vehicles => Set<Vehicle>();
     public DbSet<Depot> Depots => Set<Depot>();
     public DbSet<Order> Orders => Set<Order>();
@@ -24,6 +25,11 @@ public sealed class TmsDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ApplicationUser>(b =>
+        {
+            b.Property(x => x.FullName).HasMaxLength(256);
+        });
 
         modelBuilder.Entity<Depot>(b =>
         {
@@ -48,6 +54,8 @@ public sealed class TmsDbContext : DbContext
             b.Property(x => x.Volume).HasColumnType("float");
             b.Property(x => x.Status).HasConversion<string>().HasMaxLength(128);
             b.Property(x => x.PriceEstimate).HasPrecision(18, 2);
+            b.Property(x => x.DeliveryAddress).HasMaxLength(512);
+            b.Property(x => x.ProductDescription).HasMaxLength(1024);
         });
 
         modelBuilder.Entity<Route>(ConfigureRouteConcurrency);

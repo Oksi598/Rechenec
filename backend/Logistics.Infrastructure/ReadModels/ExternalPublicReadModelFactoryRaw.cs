@@ -20,7 +20,7 @@ public sealed class ExternalPublicReadModelFactoryRaw : IExternalPublicReadModel
             .SingleAsync(u => u.Id == externalContactId, ct);
 
         // RAW: values are not masked.
-        var contact = new MaskedContactDto(user.Email, user.Phone);
+        var contact = new MaskedContactDto(user.Email ?? string.Empty, user.PhoneNumber ?? string.Empty);
 
         return new ExternalContactDto(user.Id, user.FullName, contact);
     }

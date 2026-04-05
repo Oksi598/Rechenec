@@ -1,6 +1,7 @@
 using Logistics.Application.Dtos;
 using Logistics.Application.Ports;
 using Logistics.Application.Queries;
+using Logistics.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ namespace Logistics.Api.Controllers;
 
 [ApiController]
 [Route("api/tms")]
+[Authorize]
 public sealed class TmsQueriesController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -43,7 +45,7 @@ public sealed class TmsQueriesController : ControllerBase
 
     private static MaskingScope ResolveMaskingScope(ClaimsPrincipal user)
     {
-        return user.IsInRole("Dispatcher") || user.IsInRole("Admin")
+        return user.IsInRole(AppRoles.Dispatcher) || user.IsInRole(AppRoles.Warehouse)
             ? MaskingScope.Internal
             : MaskingScope.External;
     }

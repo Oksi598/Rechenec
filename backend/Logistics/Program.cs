@@ -1,4 +1,6 @@
-
+using System.Text;
+using Logistics.Api.Data;
+using Logistics.Domain;
 using Logistics.Application.Abstractions;
 using Logistics.Application.Ports;
 using Logistics.Application.Services;
@@ -11,41 +13,100 @@ using Logistics.Infrastructure.Persistence;
 using Logistics.Infrastructure.ReadModels;
 using Logistics.Infrastructure.Storage;
 using MediatR;
-using System.Reflection;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace Logistics.Api;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
         builder.Services.AddControllers();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(policy =>
+            {
+                policy.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed(_ => true);
+            });
+        });
+
+        var jwtSection = builder.Configuration.GetSection(JwtOptions.SectionName);
+        var jwtOptions = jwtSection.Get<JwtOptions>() ?? new JwtOptions();
+        if (string.IsNullOrWhiteSpace(jwtOptions.SigningKey) || jwtOptions.SigningKey.Length < 32)
+            throw new InvalidOperationException(
+                $"Jwt:{nameof(JwtOptions.SigningKey)} must be at least 32 characters.");
+
+        builder.Services.Configure<JwtOptions>(jwtSection);
+        builder.Services.AddSingleton<JwtTokenBuilder>();
+
+        builder.Services
+            .AddIdentityCore<ApplicationUser>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireDigit = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+            .AddRoles<IdentityRole<Guid>>()
+            .AddEntityFrameworkStores<TmsDbContext>()
+            .AddSignInManager<SignInManager<ApplicationUser>>();
 
         builder.Services
             .AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = HeaderIdentityAuthHandler.SchemeName;
-                options.DefaultChallengeScheme = HeaderIdentityAuthHandler.SchemeName;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddScheme<AuthenticationSchemeOptions, HeaderIdentityAuthHandler>(
-                HeaderIdentityAuthHandler.SchemeName,
-                _ => { });
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtOptions.Issuer,
+                    ValidAudience = jwtOptions.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SigningKey))
+                };
+
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+                        if (!string.IsNullOrEmpty(accessToken) &&
+                            path.StartsWithSegments("/hubs"))
+                        {
+                            context.Token = accessToken;
+                        }
+
+                        return Task.CompletedTask;
+                    }
+                };
+            });
 
         builder.Services.AddAuthorization(options =>
         {
-            options.AddPolicy("DispatcherOnly", policy => policy.RequireRole("Dispatcher", "Admin"));
+            options.AddPolicy(
+                "DriverOrDispatcher",
+                policy => policy.RequireRole(AppRoles.Driver, AppRoles.Dispatcher));
         });
 
         builder.Services.AddSignalR();
         builder.Services.AddHealthChecks();
 
-        // CQRS via MediatR (handlers live in Application layer).
         builder.Services.AddMediatR(typeof(ApplicationAssembly).Assembly);
 
         builder.Services.AddDbContext<TmsDbContext>(options =>
@@ -59,24 +120,49 @@ public class Program
             options.UseSqlServer(cs);
         });
 
-        // Application ports implementations (Infrastructure)
         builder.Services.AddScoped<ILoadOptimizationDataProvider, LoadOptimizationDataProvider>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<IRouteAssignmentService, RouteAssignmentService>();
         builder.Services.AddScoped<IDeliveryProofRepository, DeliveryProofRepository>();
         builder.Services.AddScoped<IDeliveryProofPhotoStorage, LocalDeliveryProofPhotoStorage>();
         builder.Services.AddScoped<LoadOptimizationService>();
+        builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+        builder.Services.AddScoped<ICurrentUser, HttpCurrentUser>();
 
-        // PII masking + masked read-model factories
         builder.Services.AddScoped<IDataMaskingService, DataMaskingService>();
         builder.Services.AddScoped<IDriverPublicReadModelFactoryRaw, DriverPublicReadModelFactoryRaw>();
         builder.Services.AddScoped<IDriverPublicReadModelFactory, DriverPublicReadModelFactoryMaskedDecorator>();
         builder.Services.AddScoped<IExternalPublicReadModelFactoryRaw, ExternalPublicReadModelFactoryRaw>();
         builder.Services.AddScoped<IExternalPublicReadModelFactory, ExternalPublicReadModelFactoryMaskedDecorator>();
 
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Logistics TMS API", Version = "v1" });
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Description = "JWT Authorization header: Bearer {token}",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT"
+            });
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+        });
 
         var app = builder.Build();
 
@@ -85,10 +171,12 @@ public class Program
         {
             using var scope = app.Services.CreateScope();
             var db = scope.ServiceProvider.GetRequiredService<TmsDbContext>();
-            db.Database.Migrate();
+            await db.Database.MigrateAsync();
         }
 
-        // Configure the HTTP request pipeline.
+        if (!app.Environment.IsEnvironment("Testing"))
+            await DataSeeder.SeedAsync(app.Services);
+
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -96,8 +184,7 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
-        // Needed to serve uploaded delivery proof photos from LocalDeliveryProofPhotoStorage.
+        app.UseCors();
         app.UseStaticFiles();
 
         app.UseAuthentication();
@@ -105,10 +192,8 @@ public class Program
 
         app.MapControllers();
         app.MapHealthChecks("/health");
-
-        // Real-time tracking hub (implemented in later module).
         app.MapHub<TrackingHub>("/hubs/tracking");
 
-        app.Run();
+        await app.RunAsync();
     }
 }
