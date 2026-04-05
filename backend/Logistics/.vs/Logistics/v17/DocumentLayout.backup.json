@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\\u041E\u043A\u0441\u0430\u043D\u0430\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DDD53E09-A6EC-48F2-86EF-C977A80D1531}|Logistics.csproj|c:\\users\\\u043E\u043A\u0441\u0430\u043D\u0430\\desktop\\hackaton\\rechenec\\backend\\logistics\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DDD53E09-A6EC-48F2-86EF-C977A80D1531}|Logistics.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\\u041E\u043A\u0441\u0430\u043D\u0430\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\\u041E\u043A\u0441\u0430\u043D\u0430\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-05T07:12:39.191Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

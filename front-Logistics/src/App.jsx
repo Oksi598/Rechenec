@@ -5,7 +5,7 @@ import { createTrackingConnection, startTracking, stopTracking } from './realtim
 import './App.css'
 
 function App() {
-  const [apiBaseUrl, setApiBaseUrl] = useState('https://localhost:7253')
+  const [apiBaseUrl, setApiBaseUrl] = useState('https://localhost:7246')
   const [routeId, setRouteId] = useState('')
   const [vehicleId, setVehicleId] = useState('')
   const [orderId, setOrderId] = useState('')

@@ -28,6 +28,48 @@
         }
       }
     },
+    "/api/tms/routes/{routeId}/assignment": {
+      "put": {
+        "tags": [
+          "TmsCommands"
+        ],
+        "parameters": [
+          {
+            "name": "routeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRouteAssignmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRouteAssignmentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRouteAssignmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/tms/delivery-proofs/sync": {
       "post": {
         "tags": [
@@ -93,13 +135,6 @@
               "type": "string",
               "format": "uuid"
             }
-          },
-          {
-            "name": "scope",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -139,13 +174,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "scope",
-            "in": "query",
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -218,6 +246,24 @@
             "nullable": true
           },
           "maskedPhone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateRouteAssignmentRequest": {
+        "type": "object",
+        "properties": {
+          "vehicleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "driverId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "rowVersion": {
             "type": "string",
             "nullable": true
           }
