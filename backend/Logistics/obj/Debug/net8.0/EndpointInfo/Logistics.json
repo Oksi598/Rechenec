@@ -168,6 +168,120 @@
         }
       }
     },
+    "/api/dispatch/routes": {
+      "get": {
+        "tags": [
+          "Dispatch"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RouteListItemDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RouteListItemDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RouteListItemDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dispatch/vehicles": {
+      "get": {
+        "tags": [
+          "Dispatch"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VehicleListItemDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VehicleListItemDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VehicleListItemDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dispatch/drivers": {
+      "get": {
+        "tags": [
+          "Dispatch"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DriverListItemDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DriverListItemDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DriverListItemDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/orders": {
       "post": {
         "tags": [
@@ -769,6 +883,24 @@
         },
         "additionalProperties": false
       },
+      "DriverListItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DriverPublicDto": {
         "type": "object",
         "properties": {
@@ -930,15 +1062,14 @@
       },
       "OrderStatus": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
+          "pendingAssignment",
+          "pendingLoadOptimization",
+          "readyForRouting",
+          "inRouting",
+          "delivered",
+          "cancelled"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "RegisterCustomerRequest": {
         "type": "object",
@@ -956,6 +1087,40 @@
             "nullable": true
           },
           "phone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RouteListItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vehicleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "driverId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "rowVersionBase64": {
             "type": "string",
             "nullable": true
           }
@@ -994,6 +1159,32 @@
           "rowVersion": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VehicleListItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "plateNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleType": {
+            "type": "string",
+            "nullable": true
+          },
+          "capacityWeight": {
+            "type": "number",
+            "format": "double"
+          },
+          "capacityVolume": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

@@ -92,6 +92,66 @@
     ]
   },
   {
+    "ContainingType": "Logistics.Api.Controllers.DispatchController",
+    "Method": "Drivers",
+    "RelativePath": "api/dispatch/drivers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Logistics.Api.Controllers.DispatchController\u002BDriverListItemDto, Logistics.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Logistics.Api.Controllers.DispatchController",
+    "Method": "Routes",
+    "RelativePath": "api/dispatch/routes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Logistics.Api.Controllers.DispatchController\u002BRouteListItemDto, Logistics.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Logistics.Api.Controllers.DispatchController",
+    "Method": "Vehicles",
+    "RelativePath": "api/dispatch/vehicles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Logistics.Api.Controllers.DispatchController\u002BVehicleListItemDto, Logistics.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Logistics.Api.Controllers.OrdersController",
     "Method": "Create",
     "RelativePath": "api/orders",
