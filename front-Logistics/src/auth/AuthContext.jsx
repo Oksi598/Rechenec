@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { api, getToken, setToken } from '../api/client'
 
 const AuthContext = createContext(null)
@@ -6,22 +6,30 @@ const AuthContext = createContext(null)
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const refreshGen = useRef(0)
 
   const refreshMe = useCallback(async () => {
-    const t = getToken()
-    if (!t) {
-      setUser(null)
-      setLoading(false)
+    const id = ++refreshGen.current
+    const tokenAtStart = getToken()
+    if (!tokenAtStart) {
+      if (id === refreshGen.current) {
+        setUser(null)
+        setLoading(false)
+      }
       return
     }
     try {
       const me = await api('/api/auth/me')
+      if (id !== refreshGen.current) return
       setUser(me)
     } catch {
-      setUser(null)
-      setToken(null)
+      if (id !== refreshGen.current) return
+      if (getToken() === tokenAtStart) {
+        setUser(null)
+        setToken(null)
+      }
     } finally {
-      setLoading(false)
+      if (id === refreshGen.current) setLoading(false)
     }
   }, [])
 
@@ -56,8 +64,10 @@ export function AuthProvider({ children }) {
   }, [refreshMe])
 
   const logout = useCallback(() => {
+    refreshGen.current++
     setToken(null)
     setUser(null)
+    setLoading(false)
   }, [])
 
   const value = useMemo(

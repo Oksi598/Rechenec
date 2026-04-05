@@ -17,15 +17,18 @@ export function authHeaders() {
 
 /** Multipart form (без Content-Type — boundary виставить браузер). */
 export async function apiForm(path, formData) {
+  const tokenUsed = getToken()
   const res = await fetch(path, {
     method: 'POST',
     headers: authHeaders(),
     body: formData,
   })
 
+  // Не затирати новий токен, якщо 401 належить старому паралельному запиту (після логіну).
   if (
     res.status === 401 &&
-    getToken() &&
+    tokenUsed &&
+    getToken() === tokenUsed &&
     !path.includes('/api/auth/login') &&
     !path.includes('/api/auth/register')
   ) {
@@ -63,6 +66,7 @@ export async function apiForm(path, formData) {
  */
 export async function api(path, options = {}) {
   const { json, ...rest } = options
+  const tokenUsed = getToken()
   const headers = { ...authHeaders(), ...rest.headers }
 
   let body = rest.body
@@ -75,7 +79,8 @@ export async function api(path, options = {}) {
 
   if (
     res.status === 401 &&
-    getToken() &&
+    tokenUsed &&
+    getToken() === tokenUsed &&
     !path.includes('/api/auth/login') &&
     !path.includes('/api/auth/register')
   ) {
