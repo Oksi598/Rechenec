@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api, apiForm, getToken } from '../api/client'
+import { formatOrderStatus } from '../lib/orderStatus'
 import { createTrackingConnection, startTracking, stopTracking } from '../realtime/tracking'
 
 export function DriverPanel() {
@@ -88,7 +89,7 @@ export function DriverPanel() {
               <article key={o.id} className="card">
                 <div className="row-between">
                   <strong>{o.productDescription}</strong>
-                  <span className="badge">{o.status}</span>
+                  <span className="badge">{formatOrderStatus(o.status)}</span>
                 </div>
                 <p className="small muted">
                   {o.routeStartTime && new Date(o.routeStartTime).toLocaleString()} —{' '}

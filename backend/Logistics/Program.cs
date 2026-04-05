@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Logistics.Api.Data;
 using Logistics.Domain;
 using Logistics.Application.Abstractions;
@@ -27,7 +29,11 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+        });
         builder.Services.AddHttpContextAccessor();
         builder.Services.AddCors(options =>
         {

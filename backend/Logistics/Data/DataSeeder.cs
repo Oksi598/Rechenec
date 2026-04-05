@@ -19,6 +19,11 @@ public static class DataSeeder
 
     public const string DemoDriverPassword = "ChangeMe!1";
 
+    /// <summary>Демо-працівник складу (той самий пароль).</summary>
+    public const string DemoWarehouseEmail = "warehouse@local.test";
+
+    public const string DemoWarehousePassword = "ChangeMe!1";
+
     public static async Task SeedAsync(IServiceProvider services, CancellationToken ct = default)
     {
         using var scope = services.CreateScope();
@@ -69,6 +74,31 @@ public static class DataSeeder
         }
 
         await SeedDemoDriverVehicleRouteAsync(db, userManager, ct);
+        await SeedDemoWarehouseUserAsync(userManager, ct);
+    }
+
+    private static async Task SeedDemoWarehouseUserAsync(UserManager<ApplicationUser> userManager, CancellationToken ct)
+    {
+        var existing = await userManager.FindByEmailAsync(DemoWarehouseEmail);
+        if (existing is not null)
+            return;
+
+        var user = new ApplicationUser
+        {
+            Id = Guid.NewGuid(),
+            UserName = DemoWarehouseEmail,
+            Email = DemoWarehouseEmail,
+            EmailConfirmed = true,
+            FullName = "Demo Warehouse",
+            PhoneNumber = "+380222222222",
+            CreatedAt = DateTimeOffset.UtcNow
+        };
+
+        var created = await userManager.CreateAsync(user, DemoWarehousePassword);
+        if (!created.Succeeded)
+            return;
+
+        await userManager.AddToRoleAsync(user, AppRoles.Warehouse);
     }
 
     private static async Task SeedDemoDriverVehicleRouteAsync(

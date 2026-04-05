@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api/client'
+import { formatOrderStatus } from '../lib/orderStatus'
 
 export function WarehousePanel() {
   const [orders, setOrders] = useState([])
@@ -41,7 +42,7 @@ export function WarehousePanel() {
               {orders.map((o) => (
                 <tr key={o.id}>
                   <td>
-                    <span className="badge">{o.status}</span>
+                    <span className="badge">{formatOrderStatus(o.status)}</span>
                   </td>
                   <td>{o.productDescription || '—'}</td>
                   <td>

@@ -220,7 +220,6 @@ textarea:focus {
   padding: 0.2em 0.55em;
   border: 1px solid var(--border);
   border-radius: 999px;
-  text-transform: capitalize;
 }
 
 .btn {

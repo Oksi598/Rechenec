@@ -30,8 +30,8 @@ export function LoginPage() {
     <div className="auth-card">
       <h1>Вхід</h1>
       <p className="muted small">
-        Демо: диспетчер <code>dispatcher@local.test</code> / <code>ChangeMe!1</code>, водій{' '}
-        <code>driver@local.test</code> / той самий пароль.
+        Демо: диспетчер <code>dispatcher@local.test</code>, водій <code>driver@local.test</code>, склад{' '}
+        <code>warehouse@local.test</code> — пароль усюди <code>ChangeMe!1</code>.
       </p>
       <form onSubmit={onSubmit} className="stack">
         <label>

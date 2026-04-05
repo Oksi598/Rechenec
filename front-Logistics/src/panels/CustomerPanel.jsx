@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { api } from '../api/client'
+import { formatOrderStatus } from '../lib/orderStatus'
 
 function fmtOrder(o) {
   return (
     <article key={o.id} className="card">
       <div className="row-between">
         <strong>{o.productDescription || '—'}</strong>
-        <span className="badge">{o.status}</span>
+        <span className="badge">{formatOrderStatus(o.status)}</span>
       </div>
       <p className="muted small">
         {typeof o.priceEstimate === 'number' ? o.priceEstimate.toFixed(2) : o.priceEstimate} грн ·{' '}
