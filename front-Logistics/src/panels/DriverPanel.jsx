@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api, apiForm, getToken } from '../api/client'
 import { formatOrderStatus } from '../lib/orderStatus'
+import { getApiOrigin } from '../config.js'
 import { createTrackingConnection, startTracking, stopTracking } from '../realtime/tracking'
 
 export function DriverPanel() {
@@ -30,7 +31,7 @@ export function DriverPanel() {
 
   const connection = useMemo(() => {
     if (!routeId) return null
-    return createTrackingConnection('', routeId, getToken())
+    return createTrackingConnection(getApiOrigin(), routeId, getToken())
   }, [routeId])
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { openDB, type DBSchema } from 'idb'
 import { authHeaders } from '../api/client.js'
+import { apiUrl } from '../config.js'
 
 export const DEFAULT_DELIVERY_PROOF_SYNC_ENDPOINT = '/api/tms/delivery-proofs/sync'
 
@@ -77,7 +78,7 @@ export async function syncDeliveryProofs(endpoint: string) {
     form.append('clientProofId', rec.clientProofId)
     form.append('photo', rec.photoBlob, rec.photoFileName)
 
-    const res = await fetch(endpoint, {
+    const res = await fetch(apiUrl(endpoint), {
       method: 'POST',
       headers: authHeaders(),
       body: form,
