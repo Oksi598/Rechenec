@@ -1,27 +1,16 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "qBDmvXvQr80=",
+  "dgSpecHash": "CFxj66qxQuY=",
   "success": true,
-  "projectFilePath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
+  "projectFilePath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Женя\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\Женя\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.25\\microsoft.netcore.app.ref.8.0.25.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.25\\microsoft.windowsdesktop.app.ref.8.0.25.nupkg.sha512",
+    "C:\\Users\\Женя\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.25\\microsoft.netcore.app.ref.8.0.25.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.25\\microsoft.aspnetcore.app.ref.8.0.25.nupkg.sha512"
-=======
-  "dgSpecHash": "LRKTD7QKiOo=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Оксана\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
-    "C:\\Users\\Оксана\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
-    "C:\\Users\\Оксана\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
-    "C:\\Users\\Оксана\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
   ],
   "logs": []
 }

@@ -1,37 +1,23 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj": {}
+    "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
+    "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
         "projectName": "Logistics.Application",
-        "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
+        "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
         "packagesPath": "C:\\Users\\Женя\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\obj\\",
-=======
-    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\Logistics.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
-        "projectName": "Logistics.Application",
-        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj",
-        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\obj\\",
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+        "outputPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Женя\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -46,13 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-<<<<<<< HEAD
-              "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
-=======
-              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+              "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+                "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
               }
             }
           }
@@ -67,7 +48,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -93,40 +74,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-<<<<<<< HEAD
-    "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+    "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
         "projectName": "Logistics.Domain",
-        "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+        "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
         "packagesPath": "C:\\Users\\Женя\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\obj\\",
-=======
-    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
-        "projectName": "Logistics.Domain",
-        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
-        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\obj\\",
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+        "outputPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Женя\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -153,7 +137,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -169,40 +153,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-<<<<<<< HEAD
-    "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
+    "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj",
         "projectName": "Logistics.Infrastructure",
-        "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Женя\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\obj\\",
-=======
-    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj",
-        "projectName": "Logistics.Infrastructure",
-        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Infrastructure\\obj\\",
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+        "outputPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Женя\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -217,19 +204,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-<<<<<<< HEAD
-              "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-                "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
+              "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
+                "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
               },
-              "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
-=======
-              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
-              },
-              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+              "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+                "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
               }
             }
           }
@@ -244,7 +223,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -280,6 +259,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -288,35 +281,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-<<<<<<< HEAD
-    "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj": {
+    "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
+        "projectUniqueName": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
         "projectName": "Logistics.Api",
-        "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
+        "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
         "packagesPath": "C:\\Users\\Женя\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\obj\\",
-=======
-    "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\Logistics.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\Logistics.csproj",
-        "projectName": "Logistics.Api",
-        "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\Logistics.csproj",
-        "packagesPath": "C:\\Users\\Оксана\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics\\obj\\",
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+        "outputPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Оксана\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Женя\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -331,25 +313,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-<<<<<<< HEAD
-              "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-                "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
+              "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
+                "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
               },
-              "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
+              "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+                "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
               },
-              "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
-                "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj"
-=======
-              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
-              },
-              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
-              },
-              "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj"
->>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
+              "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj"
               }
             }
           }
@@ -364,7 +335,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -396,6 +367,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.25, 8.0.25]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -404,7 +393,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
