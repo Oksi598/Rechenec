@@ -5,6 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Logistics.Api.Controllers;
 
+/// <summary>
+/// Довідник депо для вибору пункту відвантаження («звідки») при створенні замовлення.
+/// <c>GET /api/depots</c> — список id, назва, координати (будь-який автентифікований користувач).
+/// </summary>
 [ApiController]
 [Route("api/depots")]
 [Authorize]

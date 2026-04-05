@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Logistics.Api.Controllers;
 
+/// <summary>
+/// Створення облікових записів персоналу диспетчером: водій або працівник складу.
+/// <c>POST /api/staff/users</c> — лише роль Dispatcher; у тілі <c>role</c> = <c>Driver</c> або <c>Warehouse</c>.
+/// Самореєстрації для цих ролей немає — тільки через цей endpoint.
+/// </summary>
 [ApiController]
 [Route("api/staff/users")]
 [Authorize(Roles = AppRoles.Dispatcher)]

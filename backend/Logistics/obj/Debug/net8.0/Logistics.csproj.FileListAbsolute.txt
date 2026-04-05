@@ -162,4 +162,3 @@ c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\obj\Debug\net8.0\r
 c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\obj\Debug\net8.0\Logistics.Api.pdb
 c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\obj\Debug\net8.0\Logistics.genruntimeconfig.cache
 c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\obj\Debug\net8.0\ref\Logistics.Api.dll
-C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

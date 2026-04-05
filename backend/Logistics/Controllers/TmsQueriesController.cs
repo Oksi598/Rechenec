@@ -9,6 +9,10 @@ using System.Security.Claims;
 
 namespace Logistics.Api.Controllers;
 
+/// <summary>
+/// Публічні DTO водія/контакту з маскуванням ПІІ: Dispatcher і Warehouse бачать «внутрішні» дані,
+/// інші ролі — зовнішнє маскування. Потрібен JWT.
+/// </summary>
 [ApiController]
 [Route("api/tms")]
 [Authorize]

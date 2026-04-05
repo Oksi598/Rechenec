@@ -9,6 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Logistics.Api.Controllers;
 
+/// <summary>
+/// Команди TMS (зміни стану): оптимізація навантаження маршруту, призначення ТЗ/водія на маршрут, синхронізація підтвердження доставки (фото).
+/// <c>optimize-load</c> та <c>assignment</c> — лише Dispatcher.
+/// <c>delivery-proofs/sync</c> — Driver або Dispatcher (multipart form).
+/// </summary>
 [ApiController]
 [Route("api/tms")]
 [Authorize]

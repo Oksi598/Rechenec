@@ -1,4 +1,5 @@
 import { openDB, type DBSchema } from 'idb'
+import { authHeaders } from '../api/client.js'
 
 export const DEFAULT_DELIVERY_PROOF_SYNC_ENDPOINT = '/api/tms/delivery-proofs/sync'
 
@@ -78,6 +79,7 @@ export async function syncDeliveryProofs(endpoint: string) {
 
     const res = await fetch(endpoint, {
       method: 'POST',
+      headers: authHeaders(),
       body: form,
       credentials: 'include',
     })

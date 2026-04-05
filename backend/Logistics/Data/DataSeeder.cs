@@ -1,5 +1,6 @@
 using Logistics.Domain;
 using Logistics.Domain.Entities;
+using Logistics.Domain.Enums;
 using Logistics.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,11 @@ public static class DataSeeder
     public const string DispatcherEmail = "dispatcher@local.test";
 
     public const string DispatcherPassword = "ChangeMe!1";
+
+    /// <summary>Демо-водій для перевірки UI (той самий пароль).</summary>
+    public const string DemoDriverEmail = "driver@local.test";
+
+    public const string DemoDriverPassword = "ChangeMe!1";
 
     public static async Task SeedAsync(IServiceProvider services, CancellationToken ct = default)
     {
@@ -61,6 +67,66 @@ public static class DataSeeder
 
             await userManager.AddToRoleAsync(dispatcher, AppRoles.Dispatcher);
         }
+
+        await SeedDemoDriverVehicleRouteAsync(db, userManager, ct);
+    }
+
+    private static async Task SeedDemoDriverVehicleRouteAsync(
+        TmsDbContext db,
+        UserManager<ApplicationUser> userManager,
+        CancellationToken ct)
+    {
+        var demoDriver = await userManager.FindByEmailAsync(DemoDriverEmail);
+        if (demoDriver is null)
+        {
+            demoDriver = new ApplicationUser
+            {
+                Id = Guid.NewGuid(),
+                UserName = DemoDriverEmail,
+                Email = DemoDriverEmail,
+                EmailConfirmed = true,
+                FullName = "Demo Driver",
+                PhoneNumber = "+380111111111",
+                CreatedAt = DateTimeOffset.UtcNow
+            };
+
+            var created = await userManager.CreateAsync(demoDriver, DemoDriverPassword);
+            if (!created.Succeeded)
+                return;
+
+            await userManager.AddToRoleAsync(demoDriver, AppRoles.Driver);
+        }
+
+        if (!await db.Vehicles.AnyAsync(ct))
+        {
+            db.Vehicles.Add(new Vehicle
+            {
+                Id = Guid.NewGuid(),
+                PlateNumber = "DEMO-01",
+                CapacityWeight = 3_500,
+                CapacityVolume = 18,
+                FuelConsumption = 12,
+                VehicleType = "van",
+                IsActive = true
+            });
+            await db.SaveChangesAsync(ct);
+        }
+
+        if (await db.Routes.AnyAsync(ct))
+            return;
+
+        var vehicle = await db.Vehicles.AsNoTracking().FirstAsync(ct);
+        var route = new Logistics.Domain.Entities.Route
+        {
+            Id = Guid.NewGuid(),
+            VehicleId = vehicle.Id,
+            DriverId = demoDriver.Id,
+            StartTime = DateTimeOffset.UtcNow,
+            EndTime = DateTimeOffset.UtcNow.AddHours(10),
+            Status = RouteStatus.Planned
+        };
+        db.Routes.Add(route);
+        await db.SaveChangesAsync(ct);
     }
 
     private static async Task SeedDepotsIfEmptyAsync(TmsDbContext db, CancellationToken ct)

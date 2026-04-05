@@ -9,6 +9,12 @@ using System.Security.Claims;
 
 namespace Logistics.Api.Controllers;
 
+/// <summary>
+/// Замовлення: створення заявки замовником, перегляд за ролями.
+/// <c>POST /</c> — тільки Customer. <c>GET /{id}</c> — Customer (свої), Driver (на своєму маршруті), Warehouse, Dispatcher.
+/// <c>GET /mine</c> — Customer; <c>GET /driver</c> — Driver; <c>GET /warehouse-board</c> — Warehouse (активні не доставлені);
+/// <c>GET /all</c> — Dispatcher (усі).
+/// </summary>
 [ApiController]
 [Route("api/orders")]
 [Authorize]

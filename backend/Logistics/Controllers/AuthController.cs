@@ -9,6 +9,11 @@ using Microsoft.Extensions.Options;
 
 namespace Logistics.Api.Controllers;
 
+/// <summary>
+/// Авторизація JWT: реєстрація лише замовників (<c>POST /register</c>),
+/// вхід для всіх ролей (<c>POST /login</c>), перегляд поточного користувача (<c>GET /me</c>).
+/// Після <c>register</c> або <c>login</c> у відповіді — <c>accessToken</c> для заголовка <c>Authorization: Bearer …</c>.
+/// </summary>
 [ApiController]
 [Route("api/auth")]
 public sealed class AuthController : ControllerBase
