@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RjbdS8Txbew=",
+  "dgSpecHash": "pjx0ybyYGP4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+  "projectFilePath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Женя\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.25\\microsoft.windowsdesktop.app.ref.8.0.25.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.25\\microsoft.netcore.app.ref.8.0.25.nupkg.sha512",
+    "C:\\Users\\Женя\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.25\\microsoft.windowsdesktop.app.ref.8.0.25.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.25\\microsoft.aspnetcore.app.ref.8.0.25.nupkg.sha512"
   ],
   "logs": []

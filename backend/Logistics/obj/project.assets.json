@@ -4446,11 +4446,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
+      "projectUniqueName": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
       "projectName": "Logistics.Api",
-      "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
+      "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\Logistics.csproj",
       "packagesPath": "C:\\Users\\Женя\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\obj\\",
+      "outputPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4471,14 +4471,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
-              "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
+            "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj": {
+              "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Application\\Logistics.Application.csproj"
             },
-            "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
-              "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
+            "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj": {
+              "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj"
             },
-            "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj"
+            "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj": {
+              "projectPath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Infrastructure\\Logistics.Infrastructure.csproj"
             }
           }
         }

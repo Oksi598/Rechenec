@@ -8,6 +8,11 @@ namespace Logistics.Api.Data;
 
 public static class DataSeeder
 {
+    /// <summary>Єдиний сидований диспетчер (логін через /api/auth/login).</summary>
+    public const string DispatcherEmail = "dispatcher@local.test";
+
+    public const string DispatcherPassword = "ChangeMe!1";
+
     public static async Task SeedAsync(IServiceProvider services, CancellationToken ct = default)
     {
         using var scope = services.CreateScope();
@@ -35,25 +40,21 @@ public static class DataSeeder
 
         await SeedDepotsIfEmptyAsync(db, ct);
 
-        var config = provider.GetRequiredService<IConfiguration>();
-        var dispatcherEmail = config["Seed:DispatcherEmail"] ?? "dispatcher@local.test";
-        var dispatcherPassword = config["Seed:DispatcherPassword"] ?? "ChangeMe!1";
-
-        var existing = await userManager.FindByEmailAsync(dispatcherEmail);
+        var existing = await userManager.FindByEmailAsync(DispatcherEmail);
         if (existing is null)
         {
             var dispatcher = new ApplicationUser
             {
                 Id = Guid.NewGuid(),
-                UserName = dispatcherEmail,
-                Email = dispatcherEmail,
+                UserName = DispatcherEmail,
+                Email = DispatcherEmail,
                 EmailConfirmed = true,
                 FullName = "System Dispatcher",
                 PhoneNumber = "+380000000000",
                 CreatedAt = DateTimeOffset.UtcNow
             };
 
-            var create = await userManager.CreateAsync(dispatcher, dispatcherPassword);
+            var create = await userManager.CreateAsync(dispatcher, DispatcherPassword);
             if (!create.Succeeded)
                 throw new InvalidOperationException(
                     "Failed to seed dispatcher: " + string.Join("; ", create.Errors.Select(e => e.Description)));

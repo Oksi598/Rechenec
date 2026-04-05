@@ -568,4 +568,3 @@ c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\bin\Debug\net8.0\M
 c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 c:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
-C:\Users\Женя\Documents\GitHub\Rechenec\backend\Logistics\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
