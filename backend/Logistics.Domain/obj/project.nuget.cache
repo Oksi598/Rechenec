@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "pjx0ybyYGP4=",
   "success": true,
   "projectFilePath": "c:\\Users\\Женя\\Documents\\GitHub\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
@@ -8,5 +9,11 @@
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.25\\microsoft.windowsdesktop.app.ref.8.0.25.nupkg.sha512",
     "C:\\Users\\Женя\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.25\\microsoft.aspnetcore.app.ref.8.0.25.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "cYzREsQvW3c=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Оксана\\Desktop\\hackaton\\Rechenec\\backend\\Logistics.Domain\\Logistics.Domain.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> 6ecd85c5400e4a40c53f74d1b1376972057f8b52
   "logs": []
 }
