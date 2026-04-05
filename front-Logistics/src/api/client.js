@@ -1,5 +1,3 @@
-import { apiUrl } from '../config.js'
-
 const TOKEN_KEY = 'tms_token'
 
 export function getToken() {
@@ -20,7 +18,7 @@ export function authHeaders() {
 /** Multipart form (без Content-Type — boundary виставить браузер). */
 export async function apiForm(path, formData) {
   const tokenUsed = getToken()
-  const res = await fetch(apiUrl(path), {
+  const res = await fetch(path, {
     method: 'POST',
     headers: authHeaders(),
     body: formData,
@@ -77,7 +75,7 @@ export async function api(path, options = {}) {
     body = JSON.stringify(json)
   }
 
-  const res = await fetch(apiUrl(path), { ...rest, headers, body })
+  const res = await fetch(path, { ...rest, headers, body })
 
   if (
     res.status === 401 &&
