@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 
-self.__APP_CACHE = 'tms-app-v1'
+self.__APP_CACHE = 'tms-app-v2'
 const OFFLINE_SYNC_TAG = 'sync-delivery-proofs'
 const DB_NAME = 'tms-offline'
 const STORE_NAME = 'deliveryProofs'
@@ -31,6 +31,12 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(event.request.url)
   if (url.origin !== self.location.origin) return
+
+  // API та SignalR не кешуємо — інакше 401/JSON можуть «залипати» в кеші й ламати вхід.
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/hubs/')) {
+    event.respondWith(fetch(event.request))
+    return
+  }
 
   event.respondWith(
     (async () => {
